@@ -15,15 +15,25 @@ function main() {
   // console.log('SECOND DISPLAY!!!!');
   // display(starTrek);
 
+
+  // Check for palindromes using stack
   // true, true, true
-  console.log(is_palindrome("dad"));
-  console.log(is_palindrome("A man, a plan, a canal: Panama"));
-  console.log(is_palindrome("1001"));
-  console.log(is_palindrome("Tauhida"));
+  // console.log(is_palindrome("dad"));
+  // console.log(is_palindrome("A man, a plan, a canal: Panama"));
+  // console.log(is_palindrome("1001"));
+  // console.log(is_palindrome("Tauhida"));
+
+
+  // Matching parentheses in an expression
+  let exp = '2 * (3 + 4)';
+  matchParentheses(exp);
+  
+  let exp2 = '2 * (3 + 4';
+  matchParentheses(exp2);
 }
 
 function peek(list) {
-  console.log(list.top.data);
+  return list.top.data;
 }
 
 function display(list) {
@@ -33,6 +43,8 @@ function display(list) {
     currNode = currNode.next;
   }
 }
+
+// Check for palindromes using stack
 
 function is_palindrome(s) {
   const myStack = new Stack();
@@ -75,5 +87,34 @@ function is_palindrome2(word) {
   }
   return true;
 }
+
+
+// Matching parentheses in an expression
+function matchParentheses(exp) {
+  const forwardStack = new Stack();
+  const positionStack = new Stack();
+
+  for (let i=0; i < exp.length; i++) {
+    if (exp[i] === '(') {
+      forwardStack.push(exp[i]);
+      positionStack.push(i);
+    } else if (exp[i] === ')') {
+      if (peek(forwardStack) === '(') {
+        forwardStack.pop();
+        positionStack.pop();
+      }
+    }
+  }
+
+  if (forwardStack.top === null) {
+    console.log('Is balanced');
+    return true;
+  } else {
+    console.log(`Is not balanced, index: ${peek(positionStack)}`);
+    return peek(positionStack);
+  }
+}
+
+
 
 main();
