@@ -37,6 +37,7 @@ function display(list) {
 function is_palindrome(s) {
   const myStack = new Stack();
   let stringOne = s.toLowerCase().replace(/[\W_]/g, "");
+  
   let stringTwo = '';
   let i, t;
   i = t = stringOne.length;
@@ -57,6 +58,22 @@ function is_palindrome(s) {
     return false;
   }
 
+}
+
+function is_palindrome2(word) {
+  word = word.toLowerCase().replace(/[^a-zA-Z0-9]/g, '');
+  const forwardStack = new Stack();
+  const backwardStack = new Stack();
+  for (let i = 0; i < word.length; i++) {
+    forwardStack.push(word[i]); // 0 1 2 3
+    backwardStack.push(word[word.length - (i + 1)]);
+  }
+  for (let i = 0; i < word.length; i++) {
+    if (forwardStack.pop() !== backwardStack.pop()) {
+      return false;
+    }
+  }
+  return true;
 }
 
 main();
