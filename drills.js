@@ -1,6 +1,6 @@
-"use strict";
+'use strict';
 
-const Stack = require("./Stack");
+const Stack = require('./Stack');
 const starTrek = new Stack();
 
 function main() {
@@ -15,7 +15,6 @@ function main() {
   // console.log('SECOND DISPLAY!!!!');
   // display(starTrek);
 
-
   // Check for palindromes using stack
   // true, true, true
   // console.log(is_palindrome("dad"));
@@ -23,13 +22,15 @@ function main() {
   // console.log(is_palindrome("1001"));
   // console.log(is_palindrome("Tauhida"));
 
-
   // Matching parentheses in an expression
-  let exp = '2 * (3 + 4)';
-  matchParentheses(exp);
-  
-  let exp2 = '2 * (3 + 4';
-  matchParentheses(exp2);
+  // let exp = '2 * (3 + 4)';
+  // matchParentheses(exp);
+
+  // let exp2 = '2 * (3 + 4';
+  // matchParentheses(exp2);
+
+  //Sorting Stacks
+  sortStack(numStack);
 }
 
 function peek(list) {
@@ -48,8 +49,8 @@ function display(list) {
 
 function is_palindrome(s) {
   const myStack = new Stack();
-  let stringOne = s.toLowerCase().replace(/[\W_]/g, "");
-  
+  let stringOne = s.toLowerCase().replace(/[\W_]/g, '');
+
   let stringTwo = '';
   let i, t;
   i = t = stringOne.length;
@@ -69,7 +70,6 @@ function is_palindrome(s) {
   } else {
     return false;
   }
-
 }
 
 function is_palindrome2(word) {
@@ -88,13 +88,12 @@ function is_palindrome2(word) {
   return true;
 }
 
-
 // Matching parentheses in an expression
 function matchParentheses(exp) {
   const forwardStack = new Stack();
   const positionStack = new Stack();
 
-  for (let i=0; i < exp.length; i++) {
+  for (let i = 0; i < exp.length; i++) {
     if (exp[i] === '(') {
       forwardStack.push(exp[i]);
       positionStack.push(i);
@@ -116,14 +115,36 @@ function matchParentheses(exp) {
 }
 
 // SORT STACK
+// function sortStack(stack) {
+//   const sortedStack = new Stack();
+//   let tempSpot;
+// }
+
+let numStack = new Stack();
+numStack.push(1);
+numStack.push(5);
+numStack.push(2);
+numStack.push(6);
+
 function sortStack(stack) {
-  const sortedStack = new Stack();
-  let tempSpot;
-  
+  const tempStack = new Stack();
 
+  while (stack.top !== null) {
+    let temp = stack.pop();
+    // console.log(temp);
+    while (tempStack.top !== null && peek(tempStack) > temp) {
+      stack.push(tempStack.pop());
+    }
+    tempStack.push(temp);
+    console.log('temp');
+    console.log(JSON.stringify(tempStack));
+  }
+
+  while (tempStack.top !== null) {
+    stack.push(tempStack.pop());
+  }
+  // display(stack);
+  // console.log('This is the ordered stack', display(stack));
 }
-
-
-
 
 main();
