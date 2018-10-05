@@ -115,6 +115,15 @@ function matchParentheses(exp) {
   }
 }
 
+// SORT STACK
+function sortStack(stack) {
+  const sortedStack = new Stack();
+  let tempSpot;
+  
+
+}
+
+
 
 
 main();
