@@ -16,22 +16,8 @@ function main() {
   // display(starTrekQ);
 
 
+  display(removeItem(starTrekQ, 'Spock'));
 
-  const starTrekQ2 = new Queue();
-  let currentNode = starTrekQ.first;
-  
-  while(currentNode.prev !== null) {
-    if (currentNode.value !== 'Spock') {
-      starTrekQ2.enqueue(currentNode.value);
-    }
-    currentNode = currentNode.prev;
-    starTrekQ.dequeue();
-  }
-  if (starTrekQ.last === currentNode) {
-    starTrekQ2.enqueue(currentNode.value);
-    starTrekQ.dequeue();
-  }
-  display(starTrekQ2);
 }
 
 
@@ -46,6 +32,26 @@ function display(queue) {
     currentNode = currentNode.prev;
   }
 }
+
+function removeItem(list, item) {
+  const updatedQueue = new Queue();
+  let currentNode = list.first;
+
+  while(currentNode.prev !== null) {
+    if (currentNode.value !== item) {
+      updatedQueue.enqueue(currentNode.value);
+    }
+    currentNode = currentNode.prev;
+    list.dequeue();
+  }
+  if (starTrekQ.last === currentNode) {
+    updatedQueue.enqueue(currentNode.value);
+    list.dequeue();
+  }
+  return(updatedQueue);
+}
+
+
 
 
 main();
