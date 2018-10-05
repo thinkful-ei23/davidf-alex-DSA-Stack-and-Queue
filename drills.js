@@ -9,6 +9,11 @@ function main() {
   starTrek.push('McCoy');
   starTrek.push('Scotty');
   display(starTrek);
+  starTrek.pop('Scotty');
+  starTrek.pop('McCoy');
+  starTrek.push('Scotty');
+  console.log('SECOND DISPLAY!!!!');
+  display(starTrek);
 }
 
 function peek(list) {
