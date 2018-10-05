@@ -1,11 +1,6 @@
 'use strict';
 
-class _Node {
-  constructor(data, next) {
-    this.data = data;
-    this.next = next;
-  }
-}
+const _Node = require('./_Node');
 
 class Stack {
   constructor() {

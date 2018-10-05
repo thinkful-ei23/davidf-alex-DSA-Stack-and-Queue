@@ -136,15 +136,13 @@ function sortStack(stack) {
       stack.push(tempStack.pop());
     }
     tempStack.push(temp);
-    console.log('temp');
-    console.log(JSON.stringify(tempStack));
+    // console.log('temp');
   }
 
   while (tempStack.top !== null) {
     stack.push(tempStack.pop());
   }
-  // display(stack);
-  // console.log('This is the ordered stack', display(stack));
+  display(stack);
 }
 
 main();
