@@ -9,17 +9,8 @@ function main() {
   starTrekQ.enqueue('Uhura');
   starTrekQ.enqueue('Sulu');
   starTrekQ.enqueue('Checkov');
-
-  // console.log(starTrekQ);
-  // console.log('break;');
-  // console.log(peek(starTrekQ));
-  // display(starTrekQ);
-
-
   display(removeItem(starTrekQ, 'Spock'));
-
 }
-
 
 function peek(queue) {
   return queue.first.value;
@@ -50,8 +41,5 @@ function removeItem(list, item) {
   }
   return(updatedQueue);
 }
-
-
-
 
 main();
